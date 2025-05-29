@@ -324,20 +324,23 @@ nav {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  height: 40px; /* Altura fixa para o contêiner */
 }
 
 .logo .logo-img {
-  height: 32px;
+  height: 28px; /* Altura fixa para a imagem */
   width: auto;
   border-radius: 4px;
-  object-fit: cover;
+  object-fit: contain;
+  display: block; /* Garante que a imagem respeite as dimensões */
 }
 
 .logo span {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--amarelo-torrado);
   letter-spacing: 0.5px;
+  line-height: 1; /* Mantém o alinhamento vertical */
 }
 
 /* Efeito hover sutil */
@@ -346,16 +349,7 @@ nav {
   transition: transform 0.2s ease;
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 768px) {
-  .logo .logo-img {
-    height: 28px;
-  }
-  
-  .logo span {
-    font-size: 1.1rem;
-  }
-}
+/* Removidas as media queries para manter tamanho fixo */
 
 .nav-links {
   display: flex;
