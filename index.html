@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALMARIA - Alojamento Rural</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <div class="logo">cal<span>MARIA</span></div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#quartos">Quartos</a></li>
+                    <li><a href="#comodidades">Comodidades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li class="reserva-menu">
+                        <div class="reserva-container">
+                            <button class="btn-reserva reserva-btn">Reservar Agora</button>
+                            <div class="reserva-dropdown">
+                                <a href="tel:+351965022674" class="reserva-option">
+                                    <i class="fas fa-phone"></i> Telefonar
+                                </a>
+                                <a href="sms:+351965022674" class="reserva-option">
+                                    <i class="fas fa-comment-alt"></i> Enviar SMS
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="menu-btn">
+            <div class="menu-btn__lines"></div>
+        </div>
+    </header>
+
+    <!-- Secção Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo à cal<span>MARIA</span></h1>
+            <p>Descubra o refúgio perfeito no coração da natureza</p>
+            <div class="reserva-container">
+                <button class="btn btn-primary reserva-btn">Reservar Agora</button>
+                <div class="reserva-dropdown">
+                    <a href="tel:+351965022674" class="reserva-option">
+                        <i class="fas fa-phone"></i> Telefonar
+                    </a>
+                    <a href="sms:+351965022674" class="reserva-option">
+                        <i class="fas fa-comment-alt"></i> Enviar SMS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alojamentos -->
+    <section id="alojamentos" class="alojamentos">
+        <div class="container">
+            <h2>Nossos Quartos</h2>
+            <p class="section-subtitle">Conheça os nossos espaços de descanso</p>
+            
+            <div class="alojamentos-grid">
+                <!-- Quarto Olival -->
+                <div class="alojamento-card">
+                    <div class="alojamento-img">
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quarto Olival">
+                        <span class="preco">€50<span>/noite</span></span>
+                    </div>
+                    <div class="alojamento-info">
+                        <h3>Quarto Duplo - OLIVAL</h3>
+                        <p class="localizacao"><i class="fas fa-map-marker-alt"></i> CALMARIA</p>
+                        <div class="detalhes">
+                            <span><i class="fas fa-user"></i> 2 pessoas</span>
+                            <span><i class="fas fa-wheelchair"></i> Acessível</span>
+                        </div>
+                        <p class="descricao">Este quarto duplo alia conforto, acessibilidade e charme rústico, proporcionando um espaço acolhedor e funcional para todos os hóspedes, incluindo pessoas com mobilidade reduzida. Com uma decoração simples, sustentável e inspirada na natureza, o ambiente transmite tranquilidade e bem-estar desde o primeiro momento.</p>
+                        <div class="reserva-container">
+                            <button class="btn btn-primary reserva-btn">Reservar Agora</button>
+                            <div class="reserva-dropdown">
+                                <a href="tel:+351965022674" class="reserva-option">
+                                    <i class="fas fa-phone"></i> Telefonar
+                                </a>
+                                <a href="sms:+351965022674" class="reserva-option">
+                                    <i class="fas fa-comment-alt"></i> Enviar SMS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quarto Ceará -->
+                <div class="alojamento-card">
+                    <div class="alojamento-img">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quarto Ceará">
+                        <span class="preco">€50<span>/noite</span></span>
+                    </div>
+                    <div class="alojamento-info">
+                        <h3>Quarto Duplo - CEARA</h3>
+                        <p class="localizacao"><i class="fas fa-map-marker-alt"></i> CALMARIA</p>
+                        <div class="detalhes">
+                            <span><i class="fas fa-user"></i> 2 pessoas</span>
+                            <span><i class="fas fa-home"></i> Banho privativo</span>
+                        </div>
+                        <p class="descricao">O quarto dispõe de duas camas confortáveis, casa de banho privativa e todas as comodidades essenciais para uma estadia prática e agradável. A mobília em madeira natural, os tecidos orgânicos e os pequenos toques artesanais contribuem para um ambiente harmonioso, onde o charme do campo se encontra com o conforto moderno.</p>
+                        <div class="reserva-container">
+                            <button class="btn btn-primary reserva-btn">Reservar Agora</button>
+                            <div class="reserva-dropdown">
+                                <a href="tel:+351965022674" class="reserva-option">
+                                    <i class="fas fa-phone"></i> Telefonar
+                                </a>
+                                <a href="sms:+351965022674" class="reserva-option">
+                                    <i class="fas fa-comment-alt"></i> Enviar SMS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quarto Vinha -->
+                <div class="alojamento-card">
+                    <div class="alojamento-img">
+                        <img src="https://images.unsplash.com/photo-1566666392-678740f24322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quarto Vinha">
+                        <span class="preco">€50<span>/noite</span></span>
+                    </div>
+                    <div class="alojamento-info">
+                        <h3>Quarto Duplo - VINHA</h3>
+                        <p class="localizacao"><i class="fas fa-map-marker-alt"></i> CALMARIA</p>
+                        <div class="detalhes">
+                            <span><i class="fas fa-user"></i> 2 pessoas</span>
+                            <span><i class="fas fa-home"></i> Banho privativo</span>
+                        </div>
+                        <p class="descricao">O quarto dispõe de duas camas confortáveis, casa de banho privativa e todas as comodidades essenciais para uma estadia prática e agradável. A mobília em madeira natural, os tecidos orgânicos e os pequenos toques artesanais contribuem para um ambiente harmonioso, onde o charme do campo se encontra com o conforto moderno.</p>
+                        <div class="reserva-container">
+                            <button class="btn btn-primary reserva-btn">Reservar Agora</button>
+                            <div class="reserva-dropdown">
+                                <a href="tel:+351965022674" class="reserva-option">
+                                    <i class="fas fa-phone"></i> Telefonar
+                                </a>
+                                <a href="sms:+351965022674" class="reserva-option">
+                                    <i class="fas fa-comment-alt"></i> Enviar SMS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2>Sobre a CALMARIA</h2>
+            <p class="section-subtitle">Um refúgio de paz no coração da natureza</p>
+            <div class="sobre-content">
+                <div class="sobre-texto">
+                    <p>O calMARIA oferece o equilíbrio perfeito entre conforto, autenticidade e sustentabilidade. O nosso alojamento foi cuidadosamente pensado para proporcionar uma experiência única aos nossos hóspedes, contamos com três quartos duplos com casas de banhos privativas, uma coffee station disponível para os nossos hóspedes, uma zona de estar comum e um terraço com uma vista única sobre a vila de Campo Maior.</p>
+                    <p>O calMARIA está pensado para todos, um dos quartos está adaptado para pessoas com mobilidade reduzida, querendo proporcionar uma estadia inesquecível aos nossos hóspedes.</p>
+                    <p>Com uma localização privilegiada, o calMARIA está a poucos minutos dos principais pontos turísticos da vila, restaurantes e comércio local.</p>
+                    <div class="destaques">
+                        <div class="destaque">
+                            <i class="fas fa-leaf"></i>
+                            <span>Sustentabilidade</span>
+                        </div>
+                        <div class="destaque">
+                            <i class="fas fa-spa"></i>
+                            <span>Bem-estar</span>
+                        </div>
+                        <div class="destaque">
+                            <i class="fas fa-heart"></i>
+                            <span>Hospitalidade</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-imagem">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Exterior da CALMARIA">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comodidades -->
+    <section id="comodidades" class="comodidades">
+        <div class="container">
+            <h2>Nossas Comodidades</h2>
+            <div class="comodidades-grid">
+                <div class="comodidade">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Wi-Fi Grátis</h3>
+                </div>
+                <div class="comodidade">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Coffee Station</h3>
+                </div>
+                <div class="comodidade">
+                    <i class="fas fa-wheelchair"></i>
+                    <h3>Acessibilidade</h3>
+                </div>
+                <div class="comodidade">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3>Terraço</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2>Galeria de Fotos</h2>
+            <p class="section-subtitle">Conheça os nossos espaços</p>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sala de estar">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quarto">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1628745277862-bc0b2d68c50c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cozinha">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Casa de banho">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contactos -->
+    <section id="contactos" class="contactos">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p class="section-subtitle">Estamos à sua disposição para mais informações</p>
+            <div class="contactos-grid">
+                <div class="info-contato">
+                    <h3>Informações de Contacto</h3>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+351 965 022 674</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@calmaria.pt</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Atendimento: Segunda a Domingo, 9h - 20h</p>
+                    </div>
+                    <div class="redes-sociais">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>CALMARIA</h3>
+                    <p>Seu refúgio perfeito no coração da natureza.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#alojamentos">Nossos Quartos</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#comodidades">Comodidades</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#contactos">Contactos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contactos">
+                    <h4>Contactos</h4>
+                    <p><i class="fas fa-phone"></i> +351 965 022 674</p>
+                    <p><i class="fas fa-envelope"></i> info@calmaria.pt</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Portugal</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CALMARIA. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
