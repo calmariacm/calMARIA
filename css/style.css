@@ -322,23 +322,27 @@ nav {
 .logo {
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--cor-texto);
-  gap: 10px;
+  gap: 8px;
+  height: 50px; /* Altura fixa para manter o alinhamento */
 }
 
 .logo .logo-img {
-  height: 50px;
+  height: 40px;
   width: auto;
-  border-radius: 8px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 .logo span {
   color: var(--amarelo-torrado);
   display: inline-flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 1.1;
+  justify-content: center;
+  margin-top: -2px; /* Ajuste fino de alinhamento */
 }
 
 .logo span span {
