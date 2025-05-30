@@ -372,30 +372,54 @@
     }
     
     .reserva-dropdown.active {
-        display: block;
+        display: block !important;
         max-height: 500px;
-        padding: 10px 15px;
+        padding: 10px 15px !important;
         margin-top: 10px;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .reserva-dropdown a {
-        padding: 10px 0 !important;
+        padding: 12px 10px !important;
         margin: 0;
         border: none !important;
         font-size: 1rem !important;
         color: #555 !important;
+        display: flex !important;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.2s ease;
     }
     
     .reserva-dropdown a:hover {
-        background: none !important;
+        background-color: rgba(128, 0, 32, 0.05) !important;
         color: var(--bordeaux) !important;
-        padding-left: 5px !important;
+        padding-left: 15px !important;
     }
     
     .reserva-dropdown a i {
         font-size: 1.1rem;
         width: 24px;
         text-align: center;
+        color: var(--bordeaux) !important;
+        margin-right: 8px;
+    }
+    
+    /* Ajustes para o botão de reserva no mobile */
+    .reserva-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .btn-reserva {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
 }
 
@@ -2173,4 +2197,186 @@ nav {
   .preco span {
     font-size: 0.7rem;
   }
+}
+
+/* Estilos da seção de Contatos */
+.contactos {
+    padding: 80px 0;
+    background-color: var(--cor-fundo-secundario);
+}
+
+.contactos .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contactos h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--bordeaux);
+}
+
+.contactos .section-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--cor-texto-claro);
+}
+
+.contactos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.info-contato {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.info-contato h3 {
+    color: var(--bordeaux);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.info-contato h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--verde-seco);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    color: var(--verde-seco);
+    font-size: 1.2rem;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.info-item p {
+    margin: 0;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* Botões de Ação Rápida */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.action-btn i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.call-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.call-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.sms-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.sms-btn:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+/* Estilos para redes sociais na seção de contatos */
+.redes-sociais {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: var(--bordeaux);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.social-icon:hover {
+    background-color: var(--verde-seco);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Responsivo para a seção de contatos */
+@media (max-width: 992px) {
+    .contactos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-contato {
+        margin-bottom: 30px;
+    }
+    
+    .quick-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .action-btn {
+        flex: 1;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        width: 100%;
+    }
 }

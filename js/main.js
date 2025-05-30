@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Adicionar classe para identificar dropdowns mobile
         if (isMobile || isTouchDevice) {
             dropdown.classList.add('mobile-dropdown');
+            
+            // Garantir que o dropdown esteja visível no mobile
+            dropdown.style.display = 'none';
+            dropdown.style.position = 'static';
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.transform = 'none';
         }
 
         // Toggle do dropdown no clique (mobile) ou hover (desktop)
@@ -128,8 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Comportamento para mobile
                 const isActive = dropdown.classList.contains('active');
                 closeAllDropdowns();
+                
                 if (!isActive) {
+                    dropdown.style.display = 'block';
                     dropdown.classList.add('active');
+                    
+                    // Rolar até o dropdown se estiver fora da tela
+                    dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    dropdown.style.display = 'none';
+                    dropdown.classList.remove('active');
                 }
             } else {
                 // Comportamento para desktop (abrir link)
@@ -143,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fechar ao clicar fora
         document.addEventListener('click', function closeOnClickOutside(e) {
             if (!container.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
                 dropdown.classList.remove('active');
             }
         });
@@ -150,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fechar ao pressionar ESC
         btn.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
+                dropdown.style.display = 'none';
                 dropdown.classList.remove('active');
                 btn.focus();
             } else if (e.key === 'Enter' || e.key === ' ') {
@@ -157,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const isActive = dropdown.classList.contains('active');
                 closeAllDropdowns();
                 if (!isActive) {
+                    dropdown.style.display = 'block';
                     dropdown.classList.add('active');
                 }
             }
@@ -171,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             dropdown.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
+                    dropdown.style.display = 'none';
                     dropdown.classList.remove('active');
                     btn.focus();
                 }
@@ -179,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!isTabPressed) {
                     return;
                 }
-
 
                 if (e.shiftKey) {
                     if (document.activeElement === firstFocusableElement) {
@@ -192,6 +210,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         firstFocusableElement.focus();
                     }
                 }
+            });
+            
+            // Fechar dropdown ao clicar em um link
+            const links = dropdown.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (isMobile || isTouchDevice) {
+                        // Pequeno atraso para permitir que o clique seja processado
+                        setTimeout(() => {
+                            dropdown.style.display = 'none';
+                            dropdown.classList.remove('active');
+                        }, 100);
+                    }
+                });
             });
         }
     });
