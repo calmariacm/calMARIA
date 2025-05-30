@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isMobile = window.innerWidth <= 992;
     let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     let lastScroll = 0;
+    let menuOpen = false;
 
     // Efeito de scroll no cabeçalho
     window.addEventListener('scroll', () => {
@@ -32,20 +33,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para fechar todos os dropdowns
     function closeAllDropdowns(except = null) {
         reservaDropdowns.forEach(dropdown => {
-            if (dropdown !== except && dropdown.classList.contains('active')) {
+            if (dropdown !== except) {
                 dropdown.classList.remove('active');
             }
         });
     }
 
+    // Verificar clique fora do menu
+    function setupClickOutside() {
+        document.addEventListener('click', function(e) {
+            // Fechar dropdowns se clicar fora
+            reservaContainers.forEach(container => {
+                const dropdown = container.querySelector('.reserva-dropdown');
+                const btn = container.querySelector('.reserva-btn');
+                
+                if (dropdown && btn && !container.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+            
+            // Fechar menu mobile se clicar fora
+            if (menuOpen && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+    }
 
     // Menu Mobile
+    function toggleMenu() {
+        menuOpen = !menuOpen;
+        hamburger.classList.toggle('active', menuOpen);
+        navLinks.classList.toggle('active', menuOpen);
+        
+        if (menuOpen) {
+            // Fechar todos os dropdowns ao abrir o menu
+            closeAllDropdowns();
+            // Adicionar overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            document.body.appendChild(overlay);
+            
+            // Fechar menu ao clicar no overlay
+            overlay.addEventListener('click', function() {
+                menuOpen = false;
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.removeChild(overlay);
+            });
+            
+            // Fechar menu ao clicar em um link
+            const navItems = navLinks.querySelectorAll('a:not(.reserva-option)');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menuOpen = false;
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    const overlay = document.querySelector('.mobile-menu-overlay');
+                    if (overlay) document.body.removeChild(overlay);
+                });
+            });
+        } else {
+            // Remover overlay ao fechar o menu
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            if (overlay) document.body.removeChild(overlay);
+        }
+    }
+
+    // Evento de clique no botão do menu
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            closeAllDropdowns();
+            toggleMenu();
         });
     }
 
@@ -55,17 +113,37 @@ document.addEventListener('DOMContentLoaded', function() {
         const dropdown = container.querySelector('.reserva-dropdown');
         
         if (!btn || !dropdown) return;
+        
+        // Adicionar classe para identificar dropdowns mobile
+        if (isMobile || isTouchDevice) {
+            dropdown.classList.add('mobile-dropdown');
+        }
 
         // Toggle do dropdown no clique (mobile) ou hover (desktop)
         btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             if (isMobile || isTouchDevice) {
-                e.preventDefault();
-                e.stopPropagation();
+                // Comportamento para mobile
                 const isActive = dropdown.classList.contains('active');
                 closeAllDropdowns();
                 if (!isActive) {
                     dropdown.classList.add('active');
                 }
+            } else {
+                // Comportamento para desktop (abrir link)
+                const parentLink = this.closest('a');
+                if (parentLink && parentLink.href) {
+                    window.location.href = parentLink.href;
+                }
+            }
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', function closeOnClickOutside(e) {
+            if (!container.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
             }
         });
 
@@ -101,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!isTabPressed) {
                     return;
                 }
+
 
                 if (e.shiftKey) {
                     if (document.activeElement === firstFocusableElement) {
@@ -226,4 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(0);
         startSlideShow();
     }
+    
+    // Configurar clique fora dos menus
+    setupClickOutside();
 });
