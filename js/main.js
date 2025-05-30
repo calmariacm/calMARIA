@@ -1,70 +1,146 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu Mobile
+    // Elementos do DOM
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+    const header = document.querySelector('header');
+    const reservaContainers = document.querySelectorAll('.reserva-container');
+    const reservaBtns = document.querySelectorAll('.reserva-btn');
+    const reservaDropdowns = document.querySelectorAll('.reserva-dropdown');
+    const isMobile = window.innerWidth <= 992;
+    let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    let lastScroll = 0;
+
+    // Efeito de scroll no cabeçalho
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Adiciona/remove classe quando rolar para baixo/cima
+        if (currentScroll <= 0) {
+            header.classList.remove('scrolled');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !header.classList.contains('scrolled')) {
+            header.classList.add('scrolled');
+        } else if (currentScroll < lastScroll && header.classList.contains('scrolled')) {
+            header.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Função para fechar todos os dropdowns
+    function closeAllDropdowns(except = null) {
+        reservaDropdowns.forEach(dropdown => {
+            if (dropdown !== except && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            }
+        });
+    }
+
+
+    // Menu Mobile
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
-            
-            // Fechar dropdown de reserva ao abrir o menu móvel
-            const reservaDropdown = document.querySelector('.reserva-dropdown');
-            if (reservaDropdown && reservaDropdown.classList.contains('active')) {
-                reservaDropdown.classList.remove('active');
-            }
+            closeAllDropdowns();
         });
     }
-    
-    // Menu de Reserva
-    const reservaBtns = document.querySelectorAll('.reserva-btn');
-    const reservaDropdowns = document.querySelectorAll('.reserva-dropdown');
-    
-    reservaBtns.forEach(btn => {
+
+    // Comportamento do menu de reserva
+    reservaContainers.forEach(container => {
+        const btn = container.querySelector('.reserva-btn');
+        const dropdown = container.querySelector('.reserva-dropdown');
+        
+        if (!btn || !dropdown) return;
+
+        // Toggle do dropdown no clique (mobile) ou hover (desktop)
         btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const dropdown = this.nextElementSibling;
-            
-            // Fechar outros dropdowns abertos
-            reservaDropdowns.forEach(d => {
-                if (d !== dropdown && d.classList.contains('active')) {
-                    d.classList.remove('active');
+            if (isMobile || isTouchDevice) {
+                e.preventDefault();
+                e.stopPropagation();
+                const isActive = dropdown.classList.contains('active');
+                closeAllDropdowns();
+                if (!isActive) {
+                    dropdown.classList.add('active');
                 }
-            });
-            
-            // Alternar o dropdown atual
-            if (dropdown && dropdown.classList.contains('reserva-dropdown')) {
-                dropdown.classList.toggle('active');
             }
         });
-    });
-    
-    // Fechar dropdown ao clicar fora
-    document.addEventListener('click', function() {
-        reservaDropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
+
+        // Fechar ao pressionar ESC
+        btn.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                dropdown.classList.remove('active');
+                btn.focus();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const isActive = dropdown.classList.contains('active');
+                closeAllDropdowns();
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                }
+            }
         });
+
+        // Navegação por teclado no dropdown
+        if (dropdown) {
+            const focusableElements = 'a[href], button, [tabindex]:not([tabindex="-1"])';
+            const focusableContent = dropdown.querySelectorAll(focusableElements);
+            const firstFocusableElement = focusableContent[0];
+            const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+            dropdown.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdown.classList.remove('active');
+                    btn.focus();
+                }
+
+                let isTabPressed = e.key === 'Tab';
+                if (!isTabPressed) {
+                    return;
+                }
+
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableElement) {
+                        e.preventDefault();
+                        lastFocusableElement.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableElement) {
+                        e.preventDefault();
+                        firstFocusableElement.focus();
+                    }
+                }
+            });
+        }
     });
-    
-    // Prevenir que o clique no dropdown feche o menu
-    reservaDropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
+
+    // Fechar dropdowns ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.reserva-container') && !e.target.closest('.reserva-dropdown')) {
+            closeAllDropdowns();
+        }
     });
-    
-    // Fechar menu ao clicar em um link
+
+    // Fechar menu mobile ao clicar em um link
     const navItems = document.querySelectorAll('.nav-links a:not(.reserva-option)');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            if (hamburger) hamburger.classList.remove('active');
-            if (navLinks) navLinks.classList.remove('active');
-            
-            // Fechar dropdowns de reserva
-            reservaDropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
+            if (hamburger) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+            closeAllDropdowns();
         });
+    });
+
+    // Atualizar estado de mobile/desktop ao redimensionar a janela
+    window.addEventListener('resize', function() {
+        const newIsMobile = window.innerWidth <= 992;
+        if (newIsMobile !== isMobile) {
+            window.location.reload();
+        }
     });
 });

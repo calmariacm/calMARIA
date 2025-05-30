@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CALMARIA - Alojamento Rural</title>
+    <title>calMARIA - Alojamento Rural</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="js/theme.js" defer></script>
@@ -23,7 +23,7 @@
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#quartos">Quartos</a></li>
                     <li><a href="#comodidades">Comodidades</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#contactos">Contacto</a></li>
                     <li class="reserva-menu">
                         <div class="reserva-container">
                             <button class="btn-reserva reserva-btn">Reservar Agora</button>
@@ -38,9 +38,6 @@
                         </div>
                     </li>
                 </ul>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
-                    <i class="fas fa-moon"></i>
-                </button>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -53,11 +50,43 @@
         </div>
     </header>
 
-    <!-- Secção Hero -->
+    <!-- Secção Hero com Slideshow -->
     <section id="inicio" class="hero">
+        <div class="slideshow">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('assets/imagens_bemvindo/Campo-Maior.jpg');">
+                <div class="slide-content">
+                    <h1>Bem-vindo à cal<span>MARIA</span></h1>
+                    <p>Descubra o refúgio perfeito no coração da natureza</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('assets/imagens_bemvindo/Castelo-Campo Maior.jpg');">
+                <div class="slide-content">
+                    <h1>Bem-vindo à cal<span>MARIA</span></h1>
+                    <p>Descubra o refúgio perfeito no coração da natureza</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('assets/imagens_bemvindo/campomaior-vistacima.jpg');">
+                <div class="slide-content">
+                    <h1>Bem-vindo à cal<span>MARIA</span></h1>
+                    <p>Descubra o refúgio perfeito no coração da natureza</p>
+                </div>
+            </div>
+            
+            <!-- Navegação do Slideshow -->
+            <button class="slideshow-button prev" aria-label="Imagem anterior">❮</button>
+            <button class="slideshow-button next" aria-label="Próxima imagem">❯</button>
+            <div class="slideshow-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
         <div class="hero-content">
-            <h1>Bem-vindo à cal<span>MARIA</span></h1>
-            <p>Descubra o refúgio perfeito no coração da natureza</p>
             <div class="reserva-container">
                 <button class="btn btn-primary reserva-btn">Reservar Agora</button>
                 <div class="reserva-dropdown">
@@ -107,7 +136,7 @@
                     </div>
                 </div>
 
-                <!-- Quarto Ceará -->
+                <!-- Quarto Ceara -->
                 <div class="alojamento-card">
                     <div class="alojamento-img">
                         <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Quarto Ceará">
@@ -248,7 +277,7 @@
     <!-- Contactos -->
     <section id="contactos" class="contactos">
         <div class="container">
-            <h2>Entre em Contato</h2>
+            <h2>Entre em Contacto</h2>
             <p class="section-subtitle">Estamos à sua disposição para mais informações</p>
             <div class="contactos-grid">
                 <div class="info-contato">
@@ -280,19 +309,22 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>CALMARIA</h3>
+                    <h3>calMARIA</h3>
                     <p>Seu refúgio perfeito no coração da natureza.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="#inicio">Início</a></li>
-                        <li><a href="#alojamentos">Nossos Quartos</a></li>
-                        <li><a href="#sobre">Sobre Nós</a></li>
-                        <li><a href="#comodidades">Comodidades</a></li>
-                        <li><a href="#galeria">Galeria</a></li>
-                        <li><a href="#contactos">Contactos</a></li>
-                    </ul>
+                    <div class="nav-links">
+                        <a href="#inicio" class="active">Início</a>
+                        <a href="#alojamentos">Quartos</a>
+                        <a href="#sobre">Sobre</a>
+                        <a href="#comodidades">Comodidades</a>
+                        <a href="#galeria">Galeria</a>
+                        <a href="#contactos">Contactos</a>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="footer-contactos">
                     <h4>Contactos</h4>
@@ -307,7 +339,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 CALMARIA. Todos os direitos reservados.</p>
+                <p>&copy; 2025 calMARIA. Todos os direitos reservados.</p>
                 <div class="footer-legal">
                     <a href="#">Política de Privacidade</a>
                     <a href="#">Termos de Uso</a>
@@ -316,6 +348,8 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/slideshow.js"></script>
 </body>
 </html>
