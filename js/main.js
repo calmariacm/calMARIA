@@ -143,4 +143,87 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.reload();
         }
     });
+
+    // Slideshow
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(n) {
+        // Esconde todos os slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Ajusta o índice se for maior que o número de slides ou menor que zero
+        currentSlide = (n + slides.length) % slides.length;
+        
+        // Mostra o slide atual
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    // Iniciar slideshow automático
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Parar slideshow quando o mouse estiver sobre o slideshow
+    const slideshow = document.querySelector('.slideshow');
+    if (slideshow) {
+        slideshow.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slideshow.addEventListener('mouseleave', () => {
+            clearInterval(slideInterval);
+            startSlideShow();
+        });
+    }
+
+
+    // Event listeners para os botões de navegação
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            clearInterval(slideInterval);
+            startSlideShow();
+        });
+    }
+
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            clearInterval(slideInterval);
+            startSlideShow();
+        });
+    }
+
+
+    // Event listeners para os dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            clearInterval(slideInterval);
+            startSlideShow();
+        });
+    });
+
+    // Iniciar o slideshow
+    if (slides.length > 0) {
+        showSlide(0);
+        startSlideShow();
+    }
 });
