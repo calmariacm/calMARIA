@@ -26,12 +26,15 @@
                     <li><a href="#contactos">Contacto</a></li>
                     <li class="reserva-menu">
                         <div class="reserva-container">
-                            <button class="btn-reserva reserva-btn">Reservar Agora</button>
-                            <div class="reserva-dropdown">
-                                <a href="tel:+351965022674" class="reserva-option">
+                            <button class="btn-reserva reserva-btn" aria-expanded="false" aria-haspopup="true" aria-label="Opções de reserva">
+                                <span>Reservar Agora</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="reserva-dropdown" role="menu">
+                                <a href="tel:+351965022674" class="reserva-option" role="menuitem">
                                     <i class="fas fa-phone"></i> Telefonar
                                 </a>
-                                <a href="sms:+351965022674" class="reserva-option">
+                                <a href="sms:+351965022674" class="reserva-option" role="menuitem">
                                     <i class="fas fa-comment-alt"></i> Enviar SMS
                                 </a>
                             </div>
@@ -249,6 +252,43 @@
                     <h3>Terraço</h3>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Regras da Casa -->
+    <section id="regras" class="regras">
+        <div class="container">
+            <h2>Informações Importantes</h2>
+            <p class="section-subtitle">Para garantir uma estadia agradável para todos</p>
+            
+            <div class="regras-grid">
+                <div class="regra-card">
+                    <div class="regra-icone">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Check-Out</h3>
+                    <p>Horário: 11:00 AM</p>
+                    <ul class="checklist">
+                        <li><i class="fas fa-check"></i> Por favor, deixe o espaço como o encontrou, limpo e arrumado</li>
+                        <li><i class="fas fa-check"></i> Desligue todos os aparelhos antes de sair</li>
+                        <li><i class="fas fa-check"></i> Feche e tranque todas as janelas e portas</li>
+                        <li><i class="fas fa-check"></i> Por favor, deixe a chave no local combinado</li>
+                    </ul>
+                </div>
+                
+                <div class="regra-card">
+                    <div class="regra-icone">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Regras da Casa</h3>
+                    <ul class="checklist">
+                        <li><i class="fas fa-check"></i> A Coffee Station é para usufruto de todos os hóspedes, sinta-se em casa</li>
+                        <li><i class="fas fa-check"></i> Desfrute da visita exterior e da sala de estar, é uma área comum, assim, apelamos ao melhor entendimento entre hóspedes</li>
+                        <li><i class="fas fa-check"></i> Não hesite em contactar-nos face a qualquer necessidade, queremos proporcionar-lhe a melhor estadia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 

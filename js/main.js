@@ -107,45 +107,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Comportamento do menu de reserva
+    // Event listeners para os botões de reserva
     reservaContainers.forEach(container => {
         const btn = container.querySelector('.reserva-btn');
         const dropdown = container.querySelector('.reserva-dropdown');
         
         if (!btn || !dropdown) return;
-        
-        // Adicionar classe para identificar dropdowns mobile
-        if (isMobile || isTouchDevice) {
-            dropdown.classList.add('mobile-dropdown');
-            
-            // Garantir que o dropdown esteja visível no mobile
-            dropdown.style.display = 'none';
-            dropdown.style.position = 'static';
-            dropdown.style.opacity = '1';
-            dropdown.style.visibility = 'visible';
-            dropdown.style.transform = 'none';
-        }
 
-        // Toggle do dropdown no clique (mobile) ou hover (desktop)
+        // Função para abrir o dropdown
+        const openDropdown = () => {
+            dropdown.style.display = 'block';
+            setTimeout(() => {
+                dropdown.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+            }, 10);
+        };
+
+        // Função para fechar o dropdown
+        const closeDropdown = () => {
+            dropdown.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+            setTimeout(() => {
+                if (!dropdown.classList.contains('active')) {
+                    dropdown.style.display = 'none';
+                }
+            }, 300);
+        };
+
+        // Toggle do dropdown no clique
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            if (isMobile || isTouchDevice) {
-                // Comportamento para mobile
-                const isActive = dropdown.classList.contains('active');
-                closeAllDropdowns();
-                
-                if (!isActive) {
-                    dropdown.style.display = 'block';
-                    dropdown.classList.add('active');
-                    
-                    // Rolar até o dropdown se estiver fora da tela
-                    dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                } else {
-                    dropdown.style.display = 'none';
-                    dropdown.classList.remove('active');
-                }
+            const isActive = dropdown.classList.contains('active');
+            closeAllDropdowns();
+            
+            if (!isActive) {
+                openDropdown();
             } else {
                 // Comportamento para desktop (abrir link)
                 const parentLink = this.closest('a');

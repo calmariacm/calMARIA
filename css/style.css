@@ -272,20 +272,41 @@
   background-color: var(--bordeaux);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 25px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
-  transition: var(--transicao);
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-reserva:hover {
   background-color: var(--verde-seco);
   transform: translateY(-2px);
-  box-shadow: var(--sombra-destaque);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito de clique */
+.btn-reserva:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o ícone dentro do botão */
+.btn-reserva i {
+  font-size: 1.1em;
+  transition: transform 0.3s ease;
+}
+
+.btn-reserva:hover i {
+  transform: translateX(3px);
 }
 
 /* Menu de contexto de reserva */
@@ -293,7 +314,7 @@
   position: relative;
   display: inline-block;
   margin-left: 10px;
-  width: 100%;
+  width: auto;
 }
 
 .reserva-dropdown {
@@ -309,6 +330,59 @@
   margin-top: 10px;
   opacity: 0;
   visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.reserva-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Estilo para as opções do dropdown */
+.reserva-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reserva-option:last-child {
+  border-bottom: none;
+}
+
+.reserva-option i {
+  margin-right: 10px;
+  color: var(--bordeaux);
+  width: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.reserva-option:hover {
+  background-color: rgba(107, 142, 35, 0.05);
+  color: var(--bordeaux);
+  padding-left: 25px;
+}
+
+.reserva-option:hover i {
+  transform: scale(1.1);
+}
+
+/* Estilo para o ícone de seta no botão */
+.btn-reserva i.fa-chevron-down {
+  margin-left: 8px;
+  font-size: 0.9em;
+  transition: transform 0.3s ease;
+}
+
+.btn-reserva[aria-expanded="true"] i.fa-chevron-down {
+  transform: rotate(180deg);
 }
 
 .alojamento-card .reserva-dropdown a:last-child {
@@ -2282,6 +2356,106 @@ nav {
     margin: 25px 0;
 }
 
+/* Estilos para a seção de Regras da Casa */
+.regras {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.regras h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--bordeaux);
+}
+
+.regras .section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: #666;
+}
+
+.regras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.regra-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.regra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.regra-icone {
+    width: 60px;
+    height: 60px;
+    background: var(--verde-seco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 24px;
+}
+
+.regra-card h3 {
+    text-align: center;
+    color: var(--bordeaux);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.regra-card p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.checklist i {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: var(--verde-seco);
+    font-size: 14px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .regras {
+        padding: 60px 0;
+    }
+    
+    .regras-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos existentes */
 .action-btn {
     display: flex;
     align-items: center;
