@@ -627,13 +627,18 @@ nav {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  z-index: 1000;
 }
 
 .logo-img {
   height: 50px;
   width: auto;
-  border-radius: 50%;
+  max-height: 50px;
+  border-radius: 8px;
   transition: var(--transicao);
+  background-color: white;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo span {
@@ -2240,9 +2245,61 @@ nav {
   .detalhes span {
     font-size: 0.85rem;
   }
+  
+  .logo {
+    height: 44px;
+    gap: 8px;
+  }
+  
+  .logo .logo-img {
+    height: 36px;
+    min-width: 36px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3px;
+    border-radius: 6px;
+  }
+  
+  .logo span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--bordeaux);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 576px) {
+  .logo {
+    height: 40px;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .logo .logo-img {
+    height: 34px;
+    min-width: 34px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+  }
+  
+  .logo span {
+    font-size: 1.2rem;
+    white-space: nowrap;
+    color: var(--bordeaux);
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Garante que o logo fique visível sobre o menu mobile */
+  .menu-ativo .logo {
+    position: relative;
+    z-index: 1001;
+  }
+  
   .hero-content h1 {
     font-size: 1.8rem;
   }
